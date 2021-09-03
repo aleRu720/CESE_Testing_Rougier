@@ -2,6 +2,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define LEDS_ALL_OFF            0x0000
+#define LEDS_ALL_ON             0xFFFF
+#define LEDS_INDEX_OFFSET       1
+
 static uint16_t *puerto;
 
 static uint16_t LedsIndexToMask(int led)
