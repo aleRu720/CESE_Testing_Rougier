@@ -50,6 +50,32 @@ Se agregaron 4 pruebas a tal efecto:
 
 Se hicieron fallar las pruebas y se agregó el mínimo código indispensable en cada paso para salvar cada error que se presentó.
 
+## Corrección de los ISSUES
+
+Se modificaron los test de prender y apagar todos los leds para independizarlos de la implementación, quedaron como sigue:
+
+- Prender todos los led en una operación
+    ```c++
+    void test_prender_todos_los_led(void){
+        const int led = 2;
+        LedsTurnOn(led);
+        LedsTurnOff(led);
+        LedsTurnOnAllLeds();
+        TEST_ASSERT_EQUAL_HEX16(LEDS_ALL_ON_TEST , ledsVirtuales);
+    }
+    ```
+
+- Apagar todos los led en una operación
+    ```c++
+    void test_apagar_todos_los_led(void){
+        const int led = 2;
+        LedsTurnOn(led);
+        LedsTurnOffAllLeds();
+        TEST_ASSERT_EQUAL_HEX16(LEDS_ALL_OFF_TEST , ledsVirtuales);
+    }
+    ```
+
+
 
 
 
