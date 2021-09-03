@@ -18,6 +18,9 @@ Valores invalidos para los parámetros
 #include "leds.h"
 #include <stdint.h>
 
+#define LEDS_ALL_ON_TEST  0xFFFF
+#define LEDS_ALL_OFF_TEST 0x0000
+
 
 static uint16_t ledsVirtuales;
 
@@ -81,7 +84,7 @@ void test_prender_todos_los_led(void){
     LedsTurnOn(led);
     LedsTurnOff(led);
     LedsTurnOnAllLeds();
-    TEST_ASSERT_EQUAL_HEX16(LEDS_ALL_ON , ledsVirtuales);
+    TEST_ASSERT_EQUAL_HEX16(LEDS_ALL_ON_TEST , ledsVirtuales);
 }
 
 /*Apagar todos los leds en una operación*/
@@ -89,5 +92,5 @@ void test_apagar_todos_los_led(void){
     const int led = 2;
     LedsTurnOn(led);
     LedsTurnOffAllLeds();
-    TEST_ASSERT_EQUAL_HEX16(LEDS_ALL_OFF , ledsVirtuales);
+    TEST_ASSERT_EQUAL_HEX16(LEDS_ALL_OFF_TEST , ledsVirtuales);
 }
